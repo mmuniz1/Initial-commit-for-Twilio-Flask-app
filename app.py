@@ -17,7 +17,7 @@ def call():
     call = client.calls.create(
         to=to_number,
         from_=twilio_number,
-        url='https://your-subdomain.onrender.com/twiml'
+        url='https://twilio-click2call.onrender.com/twiml'
     )
     return f"Calling {to_number}"
 
@@ -25,9 +25,11 @@ def call():
 def twiml():
     return '''
         <Response>
-            <Say voice="alice">This is Healthy Vida Clinic calling you back.</Say>
+            <Say voice="alice">This is My NuRx Pharmacy calling you back.</Say>
         </Response>
     '''
 
 if __name__ == "__main__":
-    app.run()
+    import os
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
